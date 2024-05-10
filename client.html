@@ -9,6 +9,7 @@
       const WS_URL = "ws:///localhost:65080";
       const ws = new WebSocket(WS_URL);
       let urlObject;
+      // Connect to WebSocket
       ws.onopen = () => console.log(`Connected to ${WS_URL}`);
       ws.onmessage = (message) => {
         const arrayBuffer = message.data;

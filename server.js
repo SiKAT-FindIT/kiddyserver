@@ -3,13 +3,18 @@ const express = require("express");
 const WebSocket = require("ws");
 const app = express();
 
+// Port for websocket
 const WS_PORT = 65080;
+
+// Port for http
 const HTTP_PORT = 8000;
 
+// Init Websocket
 const wsServer = new WebSocket.Server({ port: WS_PORT }, () =>
   console.log(`WS Server is listening at ${WS_PORT}`)
 );
 
+// Listen Web Socket
 let connectedClients = [];
 wsServer.on("connection", (ws, req) => {
   console.log("Connected");
@@ -26,6 +31,7 @@ wsServer.on("connection", (ws, req) => {
   });
 });
 
+// Routing for web monitoring video
 app.get("/client", (req, res) =>
   res.sendFile(path.resolve(__dirname, "./client.html"))
 );
